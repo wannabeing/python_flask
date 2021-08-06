@@ -1,0 +1,17 @@
+<!--오류 발생시 표시되는 HTML -->
+
+<!-- 필드오류 -->
+<!--폼 validaotrs 검증에 실패한 경우에-->
+{% for field, errors in form.errors.items() %}
+<div class="alert alert-danger" role="alert">
+    <strong>{{ form[field].label }}</strong>: {{ ', '.join(errors) }}
+</div>
+{% endfor %}
+
+<!-- flash 오류 -->
+<!--이미 존재하는 사용자입니다. 와 같은 메시지 출력 -->
+{% for message in get_flashed_messages() %}
+<div class="alert alert-danger" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
